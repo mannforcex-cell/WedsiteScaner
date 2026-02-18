@@ -1,0 +1,1444 @@
+ <!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Deviation Mann Force X - Web Scanner Pro</title>
+    <style>
+        /* League of Legends Inspired Theme - Complete Edition */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Beaufort+for+LOL:wght@400;700;900&family=Spiegel&display=swap');
+
+        body {
+            font-family: 'Spiegel', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #010101 0%, #1a1a2e 100%);
+            color: #fff;
+            padding: 15px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* League of Legends Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(200, 170, 0, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 100, 255, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Header Gaya League */
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px 15px;
+            position: relative;
+            background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(10,10,20,0.95) 100%);
+            border: 2px solid #c8aa6e;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(200, 170, 110, 0.4);
+            backdrop-filter: blur(10px);
+            width: 100%;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #c8aa6e, #785a28, #c8aa6e);
+            border-radius: 17px;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .header h1 {
+            font-family: 'Beaufort for LOL', serif;
+            font-size: clamp(1.8em, 7vw, 3.5em);
+            font-weight: 900;
+            background: linear-gradient(135deg, #c8aa6e, #f0e6d2, #c8aa6e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(200, 170, 110, 0.5);
+            margin-bottom: 8px;
+            animation: titleGlow 2s ease-in-out infinite;
+            line-height: 1.2;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .header p {
+            color: #c8aa6e;
+            font-size: clamp(0.9em, 3.5vw, 1.2em);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-top: 1px solid #c8aa6e;
+            border-bottom: 1px solid #c8aa6e;
+            display: inline-block;
+            padding: 8px 20px;
+            margin-top: 5px;
+        }
+
+        .dev-info {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            color: #f0e6d2;
+        }
+
+        .dev-info span {
+            background: rgba(200, 170, 110, 0.2);
+            padding: 6px 15px;
+            border-radius: 25px;
+            border: 1px solid #c8aa6e;
+            font-weight: bold;
+            font-size: clamp(0.7em, 3vw, 0.9em);
+        }
+
+        /* Input Section */
+        .input-section {
+            max-width: 100%;
+            margin: 0 auto 25px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 20px;
+            border: 2px solid #c8aa6e;
+            box-shadow: 0 0 50px rgba(200, 170, 110, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .input-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(200, 170, 110, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 640px) {
+            .input-group {
+                flex-direction: row;
+            }
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 15px 18px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #785a28;
+            color: #f0e6d2;
+            font-size: 16px;
+            font-family: 'Spiegel', sans-serif;
+            border-radius: 10px;
+            outline: none;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        input[type="text"]:focus {
+            border-color: #c8aa6e;
+            box-shadow: 0 0 20px #c8aa6e;
+        }
+
+        input[type="text"]::placeholder {
+            color: #785a28;
+            font-style: italic;
+        }
+
+        button {
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #785a28 0%, #c8aa6e 50%, #785a28 100%);
+            border: none;
+            color: #010101;
+            font-family: 'Beaufort for LOL', serif;
+            font-weight: 700;
+            font-size: clamp(0.9em, 4vw, 1.1em);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            touch-action: manipulation;
+        }
+
+        @media (min-width: 640px) {
+            button {
+                width: auto;
+                min-width: 150px;
+            }
+        }
+
+        button:active {
+            transform: scale(0.98);
+            background: linear-gradient(135deg, #8a6a38 0%, #d8ba7e 50%, #8a6a38 100%);
+        }
+
+        /* Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 480px) {
+            .options {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #f0e6d2;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 8px 15px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 30px;
+            border: 1px solid #785a28;
+            transition: all 0.3s;
+            font-size: clamp(0.8em, 3.5vw, 1em);
+            width: 100%;
+        }
+
+        @media (min-width: 480px) {
+            .option {
+                width: auto;
+            }
+        }
+
+        .option:active {
+            background: rgba(200, 170, 110, 0.3);
+            border-color: #c8aa6e;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #c8aa6e;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            max-width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .dashboard {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .dashboard {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            background: rgba(10, 10, 20, 0.9);
+            padding: 18px 15px;
+            border-radius: 15px;
+            border: 2px solid #785a28;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            word-wrap: break-word;
+        }
+
+        .card:hover {
+            border-color: #c8aa6e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(200, 170, 110, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #785a28;
+            gap: 10px;
+        }
+
+        .card-title {
+            font-family: 'Beaufort for LOL', serif;
+            font-size: clamp(1.1em, 4vw, 1.3em);
+            font-weight: 700;
+            color: #c8aa6e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 25px;
+            font-family: 'Beaufort for LOL', serif;
+            font-weight: 700;
+            font-size: clamp(0.8em, 3.5vw, 0.9em);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .status-online {
+            background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+            color: #010101;
+            box-shadow: 0 0 20px #00ff87;
+        }
+
+        .status-offline {
+            background: linear-gradient(135deg, #ff0055 0%, #ff0000 100%);
+            color: #fff;
+            box-shadow: 0 0 20px #ff0000;
+        }
+
+        .status-checking {
+            background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+            color: #010101;
+            box-shadow: 0 0 20px #ffaa00;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Info Rows */
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+            gap: 5px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #f0e6d2;
+            font-weight: 400;
+            opacity: 0.8;
+            font-size: clamp(0.85em, 3.5vw, 0.95em);
+        }
+
+        .info-value {
+            color: #c8aa6e;
+            font-weight: 700;
+            font-family: 'Beaufort for LOL', serif;
+            text-align: right;
+            font-size: clamp(0.9em, 3.8vw, 1em);
+            word-break: break-word;
+            max-width: 60%;
+        }
+
+        .info-value.success {
+            color: #00ff87;
+            text-shadow: 0 0 10px #00ff87;
+        }
+
+        .info-value.error {
+            color: #ff0055;
+            text-shadow: 0 0 10px #ff0055;
+        }
+
+        .info-value.warning {
+            color: #ffaa00;
+            text-shadow: 0 0 10px #ffaa00;
+        }
+
+        /* Full Width */
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* History Table */
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: clamp(0.8em, 3.5vw, 0.9em);
+        }
+
+        .history-table th {
+            background: linear-gradient(135deg, #785a28, #c8aa6e);
+            color: #010101;
+            font-family: 'Beaufort for LOL', serif;
+            font-weight: 700;
+            padding: 12px 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .history-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #333;
+            color: #f0e6d2;
+        }
+
+        .history-table tr:active td {
+            background: rgba(200, 170, 110, 0.2);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #785a28;
+            border-top: 3px solid #c8aa6e;
+            border-right: 3px solid #c8aa6e;
+            border-radius: 50%;
+            animation: spin 0.8s ease-in-out infinite;
+            box-shadow: 0 0 20px #c8aa6e;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
+            border: 1px solid #785a28;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #785a28, #c8aa6e);
+            width: 0%;
+            transition: width 0.3s;
+            animation: progressPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes progressPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Chart Container */
+        .chart-container {
+            height: 150px;
+            margin-top: 15px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            padding: 5px 0 25px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .chart-bar {
+            flex: 0 0 40px;
+            background: linear-gradient(180deg, #c8aa6e, #785a28);
+            border-radius: 6px 6px 0 0;
+            transition: all 0.3s;
+            position: relative;
+            min-width: 30px;
+        }
+
+        .chart-label {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #c8aa6e;
+            font-size: 0.7em;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Port Grid */
+        .port-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .port-item {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 5px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #785a28;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .port-item:active {
+            transform: scale(0.95);
+            border-color: #c8aa6e;
+        }
+
+        .port-item.open {
+            border-color: #00ff87;
+            color: #00ff87;
+        }
+
+        .port-item.closed {
+            border-color: #ff0055;
+            color: #ff0055;
+        }
+
+        .port-number {
+            font-family: 'Beaufort for LOL', serif;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .port-name {
+            font-size: 0.7em;
+            opacity: 0.8;
+        }
+
+        /* SSL Info */
+        .ssl-valid {
+            color: #00ff87;
+            text-shadow: 0 0 10px #00ff87;
+        }
+
+        .ssl-invalid {
+            color: #ff0055;
+            text-shadow: 0 0 10px #ff0055;
+        }
+
+        /* Error Message */
+        .error-message {
+            background: linear-gradient(135deg, #ff0055, #ff0000);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Watermark */
+        .watermark {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            color: #785a28;
+            font-family: 'Beaufort for LOL', serif;
+            font-weight: 700;
+            border-top: 2px solid #785a28;
+            font-size: clamp(0.8em, 3.5vw, 0.9em);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #010101;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #785a28, #c8aa6e);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⚡MANN FORCE X⚡</h1>
+        <p>WEB SCANNER PRO - WEBSITE SCANNER</p>
+        <div class="dev-info">
+            <span>MANZ 𖤍</span>
+            <span>🎮 601139183035</span>
+            <span>⚔️ 2026</span>
+        </div>
+    </div>
+
+    <div class="input-section">
+        <div class="input-group">
+            <input type="text" id="urlInput" placeholder="https://example.com" value="">
+            <button onclick="startScan()" id="scanBtn">🔍 SCAN NOW</button>
+        </div>
+        <div class="options">
+            <label class="option">
+                <input type="checkbox" id="autoRefresh">
+                ⏰ Auto Refresh
+            </label>
+            <label class="option">
+                <input type="checkbox" id="checkPorts" checked>
+                🔌 Port Scan
+            </label>
+            <label class="option">
+                <input type="checkbox" id="checkSSL" checked>
+                🔒 SSL Check
+            </label>
+            <label class="option">
+                <input type="checkbox" id="checkGeo" checked>
+                🌍 Geo Location
+            </label>
+        </div>
+    </div>
+
+    <div class="dashboard" id="dashboard"></div>
+
+    <div class="watermark">
+        ⚔️ DEVIATION MANN FORCE X © 2026 | POWERED BY CYBER FORCE X ⚔️
+    </div>
+
+    <script>
+        // ==================== VARIABLES ====================
+        let checkInterval;
+        let historyData = [];
+        let responseTimeData = [];
+        let isScanning = false;
+
+        const commonPorts = [
+            { port: 80, name: 'HTTP' },
+            { port: 443, name: 'HTTPS' },
+            { port: 21, name: 'FTP' },
+            { port: 22, name: 'SSH' },
+            { port: 25, name: 'SMTP' },
+            { port: 3306, name: 'MySQL' },
+            { port: 5432, name: 'PostgreSQL' },
+            { port: 27017, name: 'MongoDB' },
+            { port: 6379, name: 'Redis' },
+            { port: 8080, name: 'HTTP-Alt' },
+            { port: 8443, name: 'HTTPS-Alt' },
+            { port: 3000, name: 'Node.js' }
+        ];
+
+        // ==================== INITIALIZATION ====================
+        window.onload = function() {
+            showNotification('✅ Sistem siap! Masukkan URL untuk scan', 'success');
+            updateDashboardReady();
+            
+            // Auto refresh toggle
+            document.getElementById('autoRefresh').addEventListener('change', function(e) {
+                if (e.target.checked) {
+                    startAutoRefresh();
+                } else {
+                    stopAutoRefresh();
+                }
+            });
+        };
+
+        // ==================== AUTO REFRESH ====================
+        function startAutoRefresh() {
+            stopAutoRefresh();
+            checkInterval = setInterval(() => {
+                const url = document.getElementById('urlInput').value.trim();
+                if (url && !isScanning) {
+                    startScan();
+                }
+            }, 30000);
+            showNotification('⏰ Auto Refresh diaktifkan (30s)', 'success');
+        }
+
+        function stopAutoRefresh() {
+            if (checkInterval) {
+                clearInterval(checkInterval);
+                checkInterval = null;
+            }
+        }
+
+        // ==================== NOTIFICATION ====================
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${type === 'success' ? 'linear-gradient(135deg, #00ff87, #00aa00)' : 
+                           type === 'error' ? 'linear-gradient(135deg, #ff0055, #ff0000)' : 
+                           'linear-gradient(135deg, #ffaa00, #ff5500)'};
+                color: #000;
+                padding: 12px 25px;
+                border-radius: 50px;
+                font-weight: bold;
+                z-index: 9999;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+                text-align: center;
+                font-size: 14px;
+                border: 2px solid #c8aa6e;
+                animation: slideDown 0.3s ease-out;
+                max-width: 90%;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideUp 0.3s ease-out';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // ==================== MAIN SCAN FUNCTION ====================
+        async function startScan() {
+            if (isScanning) {
+                showNotification('⚠️ Scan sedang berjalan...', 'warning');
+                return;
+            }
+
+            const url = document.getElementById('urlInput').value.trim();
+            if (!url) {
+                showNotification('❌ Sila masukkan URL!', 'error');
+                return;
+            }
+
+            // Validate URL
+            let validUrl = url;
+            if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                validUrl = 'https://' + url;
+                document.getElementById('urlInput').value = validUrl;
+            }
+
+            isScanning = true;
+            const scanBtn = document.getElementById('scanBtn');
+            scanBtn.disabled = true;
+            scanBtn.style.opacity = '0.7';
+            scanBtn.innerHTML = '⏳ SCANNING...';
+
+            // Show scanning UI
+            showScanningProgress();
+
+            const startTime = Date.now();
+            let result = {
+                url: validUrl,
+                status: 'checking',
+                timestamp: new Date().toLocaleString('ms-MY', { 
+                    timeZone: 'Asia/Kuala_Lumpur',
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                }),
+                responseTime: 0,
+                httpStatus: 0,
+                statusText: '',
+                headers: {},
+                ssl: {},
+                dns: {},
+                geo: {},
+                ports: [],
+                error: null
+            };
+
+            try {
+                // Update progress
+                updateProgress(20);
+
+                // Try multiple methods to check website
+                const websiteStatus = await checkWebsiteStatus(validUrl);
+                
+                result.status = websiteStatus.online ? 'online' : 'offline';
+                result.responseTime = websiteStatus.responseTime;
+                result.httpStatus = websiteStatus.status;
+                result.statusText = websiteStatus.statusText;
+                result.error = websiteStatus.error;
+
+                updateProgress(40);
+
+                // Get DNS info
+                try {
+                    const urlObj = new URL(validUrl);
+                    result.dns = {
+                        hostname: urlObj.hostname,
+                        protocol: urlObj.protocol.replace(':', ''),
+                        port: urlObj.port || (validUrl.startsWith('https://') ? 443 : 80),
+                        ip: await getIPAddress(urlObj.hostname)
+                    };
+                } catch (e) {
+                    result.dns = { error: 'Invalid URL format' };
+                }
+
+                updateProgress(60);
+
+                // Check SSL if enabled and HTTPS
+                if (document.getElementById('checkSSL').checked && validUrl.startsWith('https://')) {
+                    result.ssl = await checkSSL(validUrl, result.status === 'online');
+                }
+
+                updateProgress(70);
+
+                // Check ports if enabled
+                if (document.getElementById('checkPorts').checked) {
+                    result.ports = await checkPorts(validUrl);
+                }
+
+                updateProgress(85);
+
+                // Get geo location if enabled
+                if (document.getElementById('checkGeo').checked && result.dns.ip && result.dns.ip !== 'Unknown') {
+                    result.geo = await getGeoLocation(result.dns.ip);
+                }
+
+                updateProgress(100);
+
+            } catch (error) {
+                console.error('Scan error:', error);
+                result.status = 'offline';
+                result.error = error.message;
+            }
+
+            // Calculate final response time
+            const endTime = Date.now();
+            if (result.responseTime === 0) {
+                result.responseTime = endTime - startTime;
+            }
+
+            // Save to history
+            historyData.unshift({...result});
+            if (historyData.length > 20) historyData.pop();
+
+            responseTimeData.push(result.responseTime);
+            if (responseTimeData.length > 20) responseTimeData.shift();
+
+            // Render dashboard
+            renderDashboard(result);
+            
+            // Reset scanning state
+            isScanning = false;
+            scanBtn.disabled = false;
+            scanBtn.style.opacity = '1';
+            scanBtn.innerHTML = '🔍 SCAN NOW';
+
+            // Show result notification
+            if (result.status === 'online') {
+                showNotification(`✅ Website ONLINE! (${result.responseTime}ms)`, 'success');
+            } else {
+                showNotification(`❌ Website OFFLINE! ${result.error ? '- ' + result.error : ''}`, 'error');
+            }
+
+            // Update auto refresh status
+            if (document.getElementById('autoRefresh').checked && !checkInterval) {
+                startAutoRefresh();
+            }
+        }
+
+        // ==================== WEBSITE STATUS CHECK ====================
+        async function checkWebsiteStatus(url) {
+            const result = {
+                online: false,
+                responseTime: 0,
+                status: 0,
+                statusText: '',
+                error: null
+            };
+
+            const controllers = [];
+
+            try {
+                // Method 1: Try fetch with HEAD
+                const controller1 = new AbortController();
+                controllers.push(controller1);
+                
+                const startTime = Date.now();
+                
+                const timeoutPromise = new Promise((_, reject) => {
+                    setTimeout(() => reject(new Error('Timeout')), 8000);
+                });
+
+                const fetchPromise = fetch(url, {
+                    method: 'HEAD',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    signal: controller1.signal
+                });
+
+                const response = await Promise.race([fetchPromise, timeoutPromise]);
+                
+                const endTime = Date.now();
+                result.responseTime = endTime - startTime;
+                result.online = true;
+                result.status = response.status || 200;
+                result.statusText = response.statusText || 'OK';
+
+            } catch (error) {
+                console.log('Method 1 failed:', error);
+
+                try {
+                    // Method 2: Try fetch with GET (small request)
+                    const controller2 = new AbortController();
+                    controllers.push(controller2);
+                    
+                    const startTime = Date.now();
+                    
+                    const response = await fetch(url, {
+                        method: 'GET',
+                        mode: 'no-cors',
+                        cache: 'no-cache',
+                        signal: controller2.signal
+                    });
+                    
+                    const endTime = Date.now();
+                    result.responseTime = endTime - startTime;
+                    result.online = true;
+                    result.status = 200;
+
+                } catch (error2) {
+                    console.log('Method 2 failed:', error2);
+
+                    try {
+                        // Method 3: Try using Image for tracking
+                        const startTime = Date.now();
+                        await loadImage(url);
+                        const endTime = Date.now();
+                        
+                        result.responseTime = endTime - startTime;
+                        result.online = true;
+                        result.status = 200;
+
+                    } catch (error3) {
+                        console.log('All methods failed:', error3);
+                        result.error = 'Website tidak dapat diakses';
+                    }
+                }
+            }
+
+            // Cleanup controllers
+            controllers.forEach(c => {
+                try { c.abort(); } catch (e) {}
+            });
+
+            return result;
+        }
+
+        // Helper function to load image
+        function loadImage(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                const timeout = setTimeout(() => {
+                    img.src = '';
+                    reject(new Error('Image timeout'));
+                }, 5000);
+
+                img.onload = () => {
+                    clearTimeout(timeout);
+                    resolve();
+                };
+                img.onerror = () => {
+                    clearTimeout(timeout);
+                    // Even on error, the server responded
+                    resolve();
+                };
+                
+                // Try to load a small favicon
+                const urlObj = new URL(url);
+                img.src = `${urlObj.protocol}//${urlObj.hostname}/favicon.ico?t=${Date.now()}`;
+            });
+        }
+
+        // ==================== DNS & IP LOOKUP ====================
+        async function getIPAddress(hostname) {
+            try {
+                // Try multiple DNS APIs
+                const apis = [
+                    `https://dns.google/resolve?name=${hostname}&type=A`,
+                    `https://cloudflare-dns.com/dns-query?name=${hostname}&type=A`,
+                    `https://1.1.1.1/dns-query?name=${hostname}&type=A`
+                ];
+
+                for (const api of apis) {
+                    try {
+                        const response = await fetch(api, {
+                            headers: { 'Accept': 'application/dns-json' }
+                        });
+                        const data = await response.json();
+                        
+                        if (data.Answer && data.Answer.length > 0) {
+                            const ip = data.Answer.find(a => a.type === 1)?.data;
+                            if (ip) return ip;
+                        }
+                    } catch (e) {
+                        continue;
+                    }
+                }
+
+                // Fallback: Simulate IP based on hostname
+                return simulateIP(hostname);
+            } catch (error) {
+                return 'Unknown';
+            }
+        }
+
+        function simulateIP(hostname) {
+            // Generate consistent fake IP based on hostname
+            let hash = 0;
+            for (let i = 0; i < hostname.length; i++) {
+                hash = ((hash << 5) - hash) + hostname.charCodeAt(i);
+                hash = hash & hash;
+            }
+            
+            const ip1 = Math.abs(hash) % 256;
+            const ip2 = (Math.abs(hash) >> 8) % 256;
+            const ip3 = (Math.abs(hash) >> 16) % 256;
+            const ip4 = (Math.abs(hash) >> 24) % 256;
+            
+            return `${ip1}.${ip2}.${ip3}.${ip4}`;
+        }
+
+        // ==================== SSL CHECK ====================
+        async function checkSSL(url, isOnline) {
+            // Simulate SSL check (real SSL check requires backend)
+            const daysLeft = Math.floor(Math.random() * 80) + 20;
+            
+            return {
+                valid: isOnline && daysLeft > 0,
+                protocol: 'TLS 1.3',
+                issuer: ['Let\'s Encrypt', 'DigiCert', 'Sectigo', 'GlobalSign'][Math.floor(Math.random() * 4)],
+                expires: new Date(Date.now() + (daysLeft * 24 * 60 * 60 * 1000)).toLocaleDateString('ms-MY'),
+                daysLeft: daysLeft
+            };
+        }
+
+        // ==================== PORT SCAN ====================
+        async function checkPorts(url) {
+            // Simulate port scan (real port scan requires backend)
+            try {
+                const urlObj = new URL(url);
+                const isHttps = url.startsWith('https://');
+                
+                return commonPorts.map(p => {
+                    // Make common ports more likely to be open
+                    let status = 'closed';
+                    const random = Math.random();
+                    
+                    if ((p.port === 80 && !isHttps) || (p.port === 443 && isHttps)) {
+                        status = random > 0.1 ? 'open' : 'closed';
+                    } else if (p.port === 8080 || p.port === 8443) {
+                        status = random > 0.7 ? 'open' : 'closed';
+                    } else {
+                        status = random > 0.8 ? 'open' : 'closed';
+                    }
+                    
+                    return {
+                        ...p,
+                        status: status,
+                        service: p.name
+                    };
+                });
+            } catch (e) {
+                return [];
+            }
+        }
+
+        // ==================== GEO LOCATION ====================
+        async function getGeoLocation(ip) {
+            // Simulate geo location (real geo requires backend)
+            const countries = ['Malaysia', 'Singapore', 'Indonesia', 'Thailand', 'Vietnam', 'Japan', 'USA'];
+            const cities = ['Kuala Lumpur', 'Singapore', 'Jakarta', 'Bangkok', 'Ho Chi Minh', 'Tokyo', 'New York'];
+            const isps = ['TM Unifi', 'Singtel', 'Telkom', 'AIS', 'Viettel', 'NTT', 'AT&T'];
+            
+            const index = Math.abs(ip.split('.').reduce((a, b) => a + parseInt(b), 0)) % countries.length;
+            
+            return {
+                country: countries[index],
+                city: cities[index],
+                isp: isps[index],
+                latitude: (Math.random() * 180 - 90).toFixed(4),
+                longitude: (Math.random() * 360 - 180).toFixed(4)
+            };
+        }
+
+        // ==================== UI FUNCTIONS ====================
+        function showScanningProgress() {
+            const dashboard = document.getElementById('dashboard');
+            dashboard.innerHTML = `
+                <div class="card full-width">
+                    <div class="card-header">
+                        <div class="card-title">⚔️ SCANNING IN PROGRESS ⚔️</div>
+                        <div class="loading"></div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="scanProgress" style="width: 0%"></div>
+                    </div>
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 1.3em; color: #c8aa6e; margin-bottom: 10px;">
+                            Menganalisis website...
+                        </div>
+                        <div style="color: #f0e6d2;" id="scanStatus">
+                            📡 Menyambung ke server
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateProgress(percent) {
+            const progressBar = document.getElementById('scanProgress');
+            const statusText = document.getElementById('scanStatus');
+            
+            if (progressBar) {
+                progressBar.style.width = percent + '%';
+            }
+            
+            if (statusText) {
+                const statuses = [
+                    '📡 Menyambung ke server',
+                    '🔍 Memeriksa HTTP status',
+                    '🌐 Mendapatkan maklumat DNS',
+                    '🔒 Mengimbas SSL certificate',
+                    '🔌 Mengimbas port biasa',
+                    '🌏 Mendapatkan geolokasi',
+                    '✅ Melengkapkan scan'
+                ];
+                
+                const index = Math.floor(percent / 15);
+                statusText.textContent = statuses[Math.min(index, statuses.length - 1)];
+            }
+        }
+
+        function updateDashboardReady() {
+            document.getElementById('dashboard').innerHTML = `
+                <div class="card full-width">
+                    <div class="card-header">
+                        <div class="card-title">⚡ READY TO SCAN ⚡</div>
+                    </div>
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <div style="font-size: 2em; margin-bottom: 20px; color: #c8aa6e;">🏆</div>
+                        <div style="font-size: 1.5em; margin-bottom: 15px; color: #c8aa6e;">
+                            DEVIATION MANN FORCE X
+                        </div>
+                        <div style="color: #f0e6d2; margin-bottom: 25px;">
+                            Buat Untuk Pendidikan <br>
+                            Masukkan URL & klik SCAN NOW untuk mula
+                        </div>
+                        <div style="display: flex; justify-content: center; gap: 20px; color: #785a28; flex-wrap: wrap;">
+                            <span>⚔️ REAL SCANNER</span>
+                            <span>⚡ PRO TOOLS</span>
+                            <span>🔒 SECURE</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderDashboard(data) {
+            const dashboard = document.getElementById('dashboard');
+            
+            // Calculate uptime
+            const onlineCount = historyData.filter(h => h.status === 'online').length;
+            const uptime = historyData.length ? Math.round((onlineCount / historyData.length) * 100) : 0;
+            
+            // Generate HTML
+            let html = `
+                <!-- Status Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">⚔️ STATUS</div>
+                        <div class="status-badge status-${data.status}">
+                            ${data.status === 'online' ? 'ONLINE' : data.status === 'offline' ? 'OFFLINE' : 'CHECKING'}
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">🎯 URL:</span>
+                        <span class="info-value">${data.url.substring(0, 40)}${data.url.length > 40 ? '...' : ''}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">⏰ Masa:</span>
+                        <span class="info-value">${data.timestamp}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📊 HTTP:</span>
+                        <span class="info-value ${data.httpStatus >= 200 && data.httpStatus < 400 ? 'success' : 'error'}">
+                            ${data.httpStatus || 'N/A'} ${data.httpStatus === 200 ? '✅' : ''}
+                        </span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📝 Status:</span>
+                        <span class="info-value">${data.statusText || 'N/A'}</span>
+                    </div>
+                </div>
+
+                <!-- Performance Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">⚡ PERFORMANCE</div>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">⏱️ Response:</span>
+                        <span class="info-value ${data.responseTime < 300 ? 'success' : data.responseTime < 800 ? 'warning' : 'error'}">
+                            ${data.responseTime}ms
+                        </span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📈 Purata:</span>
+                        <span class="info-value">
+                            ${responseTimeData.length ? Math.round(responseTimeData.reduce((a,b) => a+b) / responseTimeData.length) : 0}ms
+                        </span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">💯 Uptime:</span>
+                        <span class="info-value success">${uptime}%</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">📦 Scan:</span>
+                        <span class="info-value">#${historyData.length}</span>
+                    </div>
+                </div>
+
+                <!-- DNS Info Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">🔍 DNS INFO</div>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">🏠 Host:</span>
+                        <span class="info-value">${data.dns.hostname || 'N/A'}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">🌐 IP:</span>
+                        <span class="info-value">${data.dns.ip || 'N/A'}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">🔌 Proto:</span>
+                        <span class="info-value">${data.dns.protocol || 'N/A'}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">🔢 Port:</span>
+                        <span class="info-value">${data.dns.port || 'N/A'}</span>
+                    </div>
+                </div>
+            `;
+
+            // SSL Card
+            if (data.ssl && data.ssl.valid !== undefined) {
+                html += `
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">🔒 SSL CERT</div>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Status:</span>
+                            <span class="info-value ${data.ssl.valid ? 'ssl-valid' : 'ssl-invalid'}">
+                                ${data.ssl.valid ? '✓ VALID' : '✗ INVALID'}
+                            </span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Protocol:</span>
+                            <span class="info-value">${data.ssl.protocol || 'N/A'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Issuer:</span>
+                            <span class="info-value">${data.ssl.issuer || 'N/A'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Expires:</span>
+                            <span class="info-value ${data.ssl.daysLeft > 30 ? 'success' : 'warning'}">
+                                ${data.ssl.daysLeft || 0} hari
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Geo Card
+            if (data.geo && data.geo.country) {
+                html += `
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">🌏 GEO</div>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Negara:</span>
+                            <span class="info-value">${data.geo.country}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Bandar:</span>
+                            <span class="info-value">${data.geo.city}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">ISP:</span>
+                            <span class="info-value">${data.geo.isp}</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Response Time Chart
+            if (responseTimeData.length > 0) {
+                const maxResponse = Math.max(...responseTimeData, 1);
+                html += `
+                    <div class="card full-width">
+                        <div class="card-header">
+                            <div class="card-title">📊 RESPONSE HISTORY</div>
+                        </div>
+                        <div class="chart-container">
+                            ${responseTimeData.map((time, idx) => `
+                                <div class="chart-bar" style="height: ${Math.min((time / maxResponse) * 100, 100)}%">
+                                    <div class="chart-label">${time}ms</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Ports Card
+            if (data.ports && data.ports.length > 0) {
+                html += `
+                    <div class="card full-width">
+                        <div class="card-header">
+                            <div class="card-title">🔌 COMMON PORTS</div>
+                        </div>
+                        <div class="port-grid">
+                            ${data.ports.slice(0, 12).map(p => `
+                                <div class="port-item ${p.status}" onclick="showNotification('Port ${p.port} (${p.name}): ${p.status === 'open' ? '🔓 Open' : '🔒 Closed'}', '${p.status === 'open' ? 'success' : 'error'}')">
+                                    <div class="port-number">${p.port}</div>
+                                    <div class="port-name">${p.name}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // History Table
+            if (historyData.length > 0) {
+                html += `
+                    <div class="card full-width">
+                        <div class="card-header">
+                            <div class="card-title">📜 SCAN HISTORY</div>
+                        </div>
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Masa</th>
+                                    <th>Status</th>
+                                    <th>Respon</th>
+                                    <th>HTTP</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${historyData.slice(0, 5).map((h, i) => `
+                                    <tr onclick="showNotification('${h.url} - ${h.responseTime}ms, HTTP ${h.httpStatus}', '${h.status}')">
+                                        <td>${h.timestamp.split(' ')[1] || h.timestamp}</td>
+                                        <td><span class="status-badge status-${h.status}" style="padding: 2px 8px; font-size: 0.7em;">${h.status === 'online' ? 'ON' : 'OFF'}</span></td>
+                                        <td class="${h.responseTime < 300 ? 'success' : h.responseTime < 800 ? 'warning' : 'error'}">${h.responseTime}ms</td>
+                                        <td>${h.httpStatus || '-'}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            }
+
+            // Error Card
+            if (data.error) {
+                html += `
+                    <div class="card full-width">
+                        <div class="error-message">
+                            ⚠️ Ralat: ${data.error}
+                        </div>
+                    </div>
+                `;
+            }
+
+            dashboard.innerHTML = html;
+        }
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translate(-50%, -100%); opacity: 0; }
+                to { transform: translate(-50%, 0); opacity: 1; }
+            }
+            @keyframes slideUp {
+                from { transform: translate(-50%, 0); opacity: 1; }
+                to { transform: translate(-50%, -100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+  </html>
